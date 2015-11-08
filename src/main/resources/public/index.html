@@ -1,0 +1,38 @@
+<html ng-app="servicesApp" ng-controller="ServicesCtrl">
+<head>
+    <meta charset="utf8"/>
+    <title>Services</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            Image
+        </td>
+         <td>
+            Modules
+        </td>
+    </tr>
+    </thead>
+    <tr ng-repeat="service in services">
+        <td>{{service.serviceName}}</td>
+        <td>{{service.image}}</td>
+        <td>
+        <span ng-repeat="module in service.serviceModules">
+        {{module.name}},
+        </span></td>
+    </tr>
+
+
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+<script src="/app/app.js"></script>
+</body>
+</html>
