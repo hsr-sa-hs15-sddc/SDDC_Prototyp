@@ -30,9 +30,7 @@ public class ServiceModule {
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "modules")
 	private Set<Service> services = new HashSet<Service>(0);
-	
-	private String config;
-	
+		
 	private String name;
 	
 	public ServiceModule() {}
@@ -41,12 +39,8 @@ public class ServiceModule {
 		this.name = name;
 		this.size = size;
 		this.category = category;
-		this.config = config;
 	}
 	
-	public String getConfig() {
-		return config;
-	}
 	
 	public String getName() {
 		return name;
