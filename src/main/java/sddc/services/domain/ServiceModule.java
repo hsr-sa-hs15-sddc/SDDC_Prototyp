@@ -35,7 +35,7 @@ public class ServiceModule {
 	
 	public ServiceModule() {}
 	
-	public ServiceModule(String name, Size size, Category category, String config) {
+	public ServiceModule(String name, Size size, Category category) {
 		this.name = name;
 		this.size = size;
 		this.category = category;

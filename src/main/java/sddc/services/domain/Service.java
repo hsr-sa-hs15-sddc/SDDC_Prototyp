@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.FetchMode;
@@ -19,21 +19,20 @@ import org.hibernate.annotations.Fetch;
 
 import javax.persistence.JoinColumn;
 
-
-
-
 @Entity
 @Table(name = "service")  
 public class Service {
 		
 	@Id @GeneratedValue
 	private long id;
+	
+	@Column(name="name")
 	private String serviceName;
 	private String image;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "service_modules", joinColumns = { 
-			@JoinColumn(name = "service_id", nullable = false, updatable = false) }, 
+			@JoinColumn(name = "service_id", nullable = true, updatable = true) }, 
 			inverseJoinColumns = { @JoinColumn(name = "servicemodule_id", 
 					nullable = true, updatable = true) })
 	private Set<ServiceModule> modules = new HashSet<ServiceModule>(0);
