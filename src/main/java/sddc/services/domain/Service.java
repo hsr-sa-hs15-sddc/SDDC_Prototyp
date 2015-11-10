@@ -1,7 +1,6 @@
 package sddc.services.domain;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.FetchMode;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.JoinColumn;
 
