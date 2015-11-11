@@ -85,4 +85,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build></project>
+    </build>
+    <packaging>war</packaging>
+</project>
