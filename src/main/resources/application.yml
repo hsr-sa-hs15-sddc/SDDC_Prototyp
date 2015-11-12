@@ -4,11 +4,11 @@ application:
 spring:
     datasource:
       dataSourceClassName: org.postgresql.Driver
-      url: "jdbc:postgresql://ec2-54-247-170-228.eu-west-1.compute.amazonaws.com/d130h2q878f6hl"
+      url: "jdbc:postgresql://ec2-54-217-240-205.eu-west-1.compute.amazonaws.com/d2htsjui855ivk"
       databaseName:
-      serverName: "ec2-54-247-170-228.eu-west-1.compute.amazonaws.com"
-      username: "stvkibwpkwwyey"
-      password: "MEGBb5cTto6AaJf7ULHMxBxPUB"
+      serverName: "ec2-54-217-240-205.eu-west-1.compute.amazonaws.com"
+      username: "tyhahsqbynpmcn"
+      password: "fKBynXi3xfSxnPH2dKxgCbx-pP"
       cachePrepStmts: true
       prepStmtCacheSize: 250
       prepStmtCacheSqlLimit: 2048
