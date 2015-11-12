@@ -6,9 +6,9 @@ spring:
       dataSourceClassName: org.postgresql.Driver
       url: "jdbc:postgresql://ec2-54-247-170-228.eu-west-1.compute.amazonaws.com/d130h2q878f6hl"
       databaseName:
-      serverName: "ec2-54-195-252-202.eu-west-1.compute.amazonaws.com"
-      username: stvkibwpkwwyey
-      password: " MEGBb5cTto6AaJf7ULHMxBxPUB"
+      serverName: "ec2-54-247-170-228.eu-west-1.compute.amazonaws.com"
+      username: "stvkibwpkwwyey"
+      password: "MEGBb5cTto6AaJf7ULHMxBxPUB"
       cachePrepStmts: true
       prepStmtCacheSize: 250
       prepStmtCacheSqlLimit: 2048
