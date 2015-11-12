@@ -4,11 +4,11 @@ application:
 spring:
     datasource:
       dataSourceClassName: org.postgresql.Driver
-      url: jdbc:postgresql://86.119.35.56:5432/sddc
+      url: "jdbc:postgresql://ec2-54-195-252-202.eu-west-1.compute.amazonaws.com/depmrmqbk7l1u8"
       databaseName:
-      serverName: sddc.silvn.com
-      username: sddc
-      password: sddc2015
+      serverName: "ec2-54-195-252-202.eu-west-1.compute.amazonaws.com"
+      username: plnxbeeghwvqrn
+      password: "LUqPsG1rxI6mNHh9PvolnICe-M"
       cachePrepStmts: true
       prepStmtCacheSize: 250
       prepStmtCacheSqlLimit: 2048
