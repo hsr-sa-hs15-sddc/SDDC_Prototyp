@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,13 +30,19 @@ public class ServiceController {
     	Set<ServiceModule> modules = new HashSet<ServiceModule>();
     	modules.add(new ServiceModule("Modul1",Size.S,Category.Network));
     	modules.add(new ServiceModule("Modul2",Size.L,Category.Compute));
-        repo.save(new Service("something","/dev/null/image.iso"));
-        repo.save(new Service("something3","/dev/null/image.img",modules));
+        repo.save(new Service("something"));
+        repo.save(new Service("something3",modules));
     }
     
     private void cleanDb() {
     	moduleRepo.deleteAll();
         repo.deleteAll();
+    }
+    
+    @RequestMapping(value="/services/{id}")
+    @ResponseBody
+    public Service findService(@PathVariable("id") long id){
+        return repo.findOne(id);
     }
 
     @RequestMapping("/services")
