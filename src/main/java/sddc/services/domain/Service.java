@@ -25,7 +25,6 @@ public class Service {
 	
 	@Column(name="name")
 	private String serviceName;
-	private String image;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "service_modules", joinColumns = { 
@@ -36,15 +35,13 @@ public class Service {
 	
 	public Service () {}
 	
-	public Service(String serviceName, String image, Set<ServiceModule> modules) {
+	public Service(String serviceName, Set<ServiceModule> modules) {
 	    this.serviceName = serviceName;
-	    this.image = image;
 	    this.modules = modules;
 	}
 	
-	public Service(String serviceName, String image) {
+	public Service(String serviceName) {
 	    this.serviceName = serviceName;
-	    this.image = image;
 	}
 
 	public long getId() {
@@ -54,12 +51,6 @@ public class Service {
 	public String getServiceName() {
 		return serviceName;
 	}
-	
-	public String getImage() {
-		return image;
-	}
-	
-	
 	
 	public Set<ServiceModule> getServiceModules() {
 		return this.modules;
