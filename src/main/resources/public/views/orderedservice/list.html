@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tr ng-repeat="service in orderedservices">
-        <td>{{service.orderedServiceName}}</td>
+        <td><a href="#/orderedservices/{{service.id}}">{{service.orderedServiceName}}</a></td>
         <td>
         <span ng-repeat="identifier in service.identifiers">
         {{identifier.uuid}},

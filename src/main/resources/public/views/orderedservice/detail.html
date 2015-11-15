@@ -1,0 +1,23 @@
+<a href="#/orderedservices">Back to Overview</a>
+<table class="table">
+    <thead>
+    <tr>
+        <td>
+            Name
+        </td>
+         <td>
+            Identifiers
+        </td>
+    </tr>
+    </thead>
+    <tr>
+        <td>{{service.orderedServiceName}}</td>
+        <td>
+        <span ng-repeat="identifier in service.identifiers">
+        {{identifier.uuid}},
+        </span></td>
+    </tr>
+
+
+</table>
+<button type="button" ng-click="cancelService()">Cancel Service</button>

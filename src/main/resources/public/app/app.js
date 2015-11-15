@@ -11,12 +11,16 @@ sddcDashboard.config(function($routeProvider) {
       }).
       when('/orderedservices',{
         controller: 'OrderedServicesController',
-        templateUrl: 'views/orderedservices.html'
+        templateUrl: 'views/orderedservice/list.html'
       })
       .when('/services/:serviceId', {
 			controller: 'detailService',
 			templateUrl: '/views/service/detail.html'
-		}).otherwise({
+		})
+    .when('/orderedservices/:orderedserviceId', {
+    controller: 'orderedDetailService',
+    templateUrl: '/views/orderedservice/detail.html'
+  }).otherwise({
 			redirectTo: '/services'
 		});
 ;
@@ -25,4 +29,8 @@ sddcDashboard.config(function($routeProvider) {
 
 sddcDashboard.factory("Service", function($resource) {
   return $resource("/services/:id",{id: '@id'});
+});
+
+sddcDashboard.factory("OrderedService", function($resource) {
+  return $resource("/orderedservices/:id",{id: '@id'});
 });

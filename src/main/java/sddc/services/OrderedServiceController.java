@@ -9,7 +9,9 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,9 +43,15 @@ public class OrderedServiceController {
         return result;
     }
     
-    @RequestMapping(value="/orderedservices/{id}")
+    @RequestMapping(value="/orderedservices/{id}",method = RequestMethod.GET)
     @ResponseBody
     public OrderedService findService(@PathVariable("id") long id){
         return repo.findOne(id);
+    }
+    
+    @RequestMapping(value = "/orderedservices/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody String orderService(@RequestBody OrderedService service){
+     repo.delete(service.getId());
+     return "ok";
     }
 }
