@@ -8,5 +8,9 @@ sddcDashboard.config(function($routeProvider) {
       when('/', {
         controller: 'ServicesController',
         templateUrl: 'views/services.html'
+      }).
+      when('/orderedservices',{
+        controller: 'OrderedServicesController',
+        templateUrl: 'views/orderedservices.html'
       });
 });

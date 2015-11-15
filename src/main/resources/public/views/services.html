@@ -4,9 +4,6 @@
         <td>
             Name
         </td>
-        <td>
-            Image
-        </td>
          <td>
             Modules
         </td>
@@ -14,7 +11,6 @@
     </thead>
     <tr ng-repeat="service in services">
         <td>{{service.serviceName}}</td>
-        <td>{{service.image}}</td>
         <td>
         <span ng-repeat="module in service.serviceModules">
         {{module.name}},

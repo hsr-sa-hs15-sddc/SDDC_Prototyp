@@ -40,11 +40,11 @@ public class OrderedService {
 		this.identifiers = identifiers;
 	}
 
-	public String getOrdredServiceName() {
+	public String getOrderedServiceName() {
 		return name;
 	}
 
-	public void setOrdredServiceName(String name) {
+	public void setOrderedServiceName(String name) {
 		this.name = name;
 	}
 
