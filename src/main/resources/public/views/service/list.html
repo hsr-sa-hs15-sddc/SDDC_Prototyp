@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tr ng-repeat="service in services">
-        <td>{{service.serviceName}}</td>
+        <td><a href="#/services/{{service.id}}">{{service.serviceName}}</a></td>
         <td>
         <span ng-repeat="module in service.serviceModules">
         {{module.name}},

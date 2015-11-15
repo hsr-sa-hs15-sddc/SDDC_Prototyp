@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+    <tr>
+        <td>
+            Name
+        </td>
+         <td>
+            Modules
+        </td>
+    </tr>
+    </thead>
+    <tr>
+        <td>{{service.serviceName}}</td>
+        <td>
+        <span ng-repeat="module in service.serviceModules">
+        {{module.name}},
+        </span></td>
+    </tr>
+
+
+</table>
