@@ -52,6 +52,10 @@ public class Service {
 		return serviceName;
 	}
 	
+	public void setServiceName(String name) {
+		this.serviceName = name;;
+	}
+	
 	public Set<ServiceModule> getServiceModules() {
 		return this.modules;
 	}
