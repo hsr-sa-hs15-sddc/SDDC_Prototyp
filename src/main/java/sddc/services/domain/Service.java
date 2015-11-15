@@ -56,6 +56,15 @@ public class Service {
 		return this.modules;
 	}
 	
+	public Set<ServiceModule> getServiceModules(Category category) {
+		Set<ServiceModule> m = new HashSet<>();
+		for(ServiceModule serviceModule : modules) {
+			if(serviceModule.getCategory() == category)
+				m.add(serviceModule);
+		}
+		return m;
+	}
+	
 	public void setServiceModules(Set<ServiceModule> modules) {
 		this.modules = modules;
 	}
