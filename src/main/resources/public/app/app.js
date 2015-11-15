@@ -1,13 +1,12 @@
-angular.module('servicesApp', [])
-    .controller('ServicesCtrl', function($scope, $http){
-        $scope.services = [];
+'use strict';
 
-        $scope.findServices = function () {
-            $http.get("/services").success(function (data) {
-                $scope.services = data;
-            })
-        };
+var sddcDashboard = angular.module('sddcDashboard', ['ngRoute']);
 
-        $scope.findServices();
+sddcDashboard.config(function($routeProvider) {
 
-    });
+  $routeProvider.
+      when('/', {
+        controller: 'ServicesController',
+        templateUrl: 'views/services.html'
+      });
+});

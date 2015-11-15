@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            Image
+        </td>
+         <td>
+            Modules
+        </td>
+    </tr>
+    </thead>
+    <tr ng-repeat="service in services">
+        <td>{{service.serviceName}}</td>
+        <td>{{service.image}}</td>
+        <td>
+        <span ng-repeat="module in service.serviceModules">
+        {{module.name}},
+        </span></td>
+    </tr>
+
+
+</table>

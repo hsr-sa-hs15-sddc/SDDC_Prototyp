@@ -1,4 +1,4 @@
-<html ng-app="servicesApp" ng-controller="ServicesCtrl">
+<html ng-app="sddcDashboard">
 <head>
     <meta charset="utf8"/>
     <title>Services</title>
@@ -6,33 +6,11 @@
 </head>
 <body>
 
-<table class="table">
-    <thead>
-    <tr>
-        <td>
-            Name
-        </td>
-        <td>
-            Image
-        </td>
-         <td>
-            Modules
-        </td>
-    </tr>
-    </thead>
-    <tr ng-repeat="service in services">
-        <td>{{service.serviceName}}</td>
-        <td>{{service.image}}</td>
-        <td>
-        <span ng-repeat="module in service.serviceModules">
-        {{module.name}},
-        </span></td>
-    </tr>
-
-
-</table>
+<ng-view></ng-view>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js"></script>
 <script src="/app/app.js"></script>
+<script src="/app/controllers/ServicesController.js"></script>
 </body>
 </html>
