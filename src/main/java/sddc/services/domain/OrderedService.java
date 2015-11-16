@@ -56,5 +56,13 @@ public class OrderedService {
 		this.id = id;
 	}
 	
+	public Set<Identifier> getIdentifiers(Category category) {
+		Set<Identifier> m = new HashSet<>();
+		for(Identifier identifier : identifiers) {
+			if(identifier.getCategory() == category)
+				m.add(identifier);
+		}
+		return m;
+	}
 	
 }
