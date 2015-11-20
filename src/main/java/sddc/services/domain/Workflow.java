@@ -102,6 +102,8 @@ public class Workflow {
 				e.printStackTrace();
 			}
 		}
+		
+		orderedServiceRepo.delete(orderedService);
 	}
 	
 
