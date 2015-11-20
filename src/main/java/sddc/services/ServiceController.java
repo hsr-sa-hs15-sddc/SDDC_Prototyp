@@ -35,8 +35,8 @@ public class ServiceController {
     private void createInitialData() {
     	cleanDb();
     	Set<ServiceModule> modules = new HashSet<ServiceModule>();
-    	modules.add(new ServiceModule("Modul1",Size.S,Category.Network));
-    	modules.add(new ServiceModule("Modul2",Size.L,Category.Compute));
+    	modules.add(new ServiceModule("Modul1",Size.S,Category.Network,"Config"));
+    	modules.add(new ServiceModule("Modul2",Size.L,Category.Compute,"config"));
         repo.save(new Service("something"));
         repo.save(new Service("something3",modules));
     }
