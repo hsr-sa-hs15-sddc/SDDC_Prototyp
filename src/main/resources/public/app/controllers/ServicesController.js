@@ -4,7 +4,7 @@ sddcDashboard.controller('ServicesController', function($scope, $http){
         $scope.services = [];
 
         $scope.findServices = function () {
-            $http.get("/services").success(function (data) {
+            $http.get("/api/services").success(function (data) {
                 $scope.services = data;
             })
         };

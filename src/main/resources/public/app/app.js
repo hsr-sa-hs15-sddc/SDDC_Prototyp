@@ -28,9 +28,9 @@ sddcDashboard.config(function($routeProvider) {
 
 
 sddcDashboard.factory("Service", function($resource) {
-  return $resource("/services/:id",{id: '@id'});
+  return $resource("/api/services/:id",{id: '@id'});
 });
 
 sddcDashboard.factory("OrderedService", function($resource) {
-  return $resource("/orderedservices/:id",{id: '@id'});
+  return $resource("/api/orderedservices/:id",{id: '@id'});
 });

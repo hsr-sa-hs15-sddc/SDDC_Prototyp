@@ -7,6 +7,9 @@
          <td>
             Identifiers
         </td>
+        <td>
+           Options
+       </td>
     </tr>
     </thead>
     <tr ng-repeat="service in orderedservices">
@@ -15,6 +18,9 @@
         <span ng-repeat="identifier in service.identifiers">
         {{identifier.uuid}},
         </span></td>
+        <td>
+          <button type="button" ng-click="cancelService(service)">Terminate</button>
+        </td>
     </tr>
 
 

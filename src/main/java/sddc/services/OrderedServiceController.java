@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import sddc.services.domain.Category;
 import sddc.services.domain.Identifier;
 import sddc.services.domain.OrderedService;
-import sddc.services.domain.Service;
 import sddc.services.domain.Size;
 import sddc.services.domain.Workflow;
 
@@ -40,22 +38,22 @@ public class OrderedServiceController {
 		 repo.save(new OrderedService("Hello World",ids));
 	 }
 	
-    @RequestMapping("/orderedservices")
+    @RequestMapping("/api/orderedservices")
     @ResponseBody
     public List<OrderedService> findAllServices() {
         List<OrderedService> result = repo.findAll();
         return result;
     }
     
-    @RequestMapping(value="/orderedservices/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/api/orderedservices/{id}",method = RequestMethod.GET)
     @ResponseBody
     public OrderedService findService(@PathVariable("id") long id){
         return repo.findOne(id);
     }
     
-    @RequestMapping(value = "/orderedservices/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody String orderService(@RequestBody OrderedService service){
-     workflow.cancelService(service);
+    @RequestMapping(value = "/api/orderedservices/{id}", method = RequestMethod.DELETE)
+    public String cancelService(@PathVariable("id") long id){
+     workflow.cancelService(repo.findOne(id));
      return "ok";
     }
 }

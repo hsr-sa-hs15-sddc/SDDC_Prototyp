@@ -35,7 +35,7 @@ public class ServiceController {
     private ServiceModuleRepo moduleRepo;
     
     @Autowired
-    private Workflow workflow;;
+    private Workflow workflow;
     
     @PostConstruct
     private void createInitialData() {
@@ -52,25 +52,25 @@ public class ServiceController {
         repo.deleteAll();
     }
     
-    @RequestMapping(value="/services/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/api/services/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Service findService(@PathVariable("id") long id){
         return repo.findOne(id);
     }
     
-    @RequestMapping(value = "/services/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/services/{id}", method = RequestMethod.POST)
     public @ResponseBody String orderService(@RequestBody Service service){
     	workflow.orderService(service);
     	return "ok";
     }
     
-    @RequestMapping(value="/services/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/api/services/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public void deleteService(@PathVariable("id") long id) {
     	repo.delete(id);
     }
 
-    @RequestMapping("/services")
+    @RequestMapping("/api/services")
     @ResponseBody
     public List<Service> findAllServices() {
         List<Service> result = repo.findAll();
