@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashSet;
 import java.util.Set;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.libvirt.LibvirtException;
 
 import sddc.services.OrderedServiceRepo;
@@ -22,11 +19,8 @@ public class Workflow {
 	
 	private IGenericAPIFacade api;
 	
-	private Set<Identifier> ids = new HashSet();
-	
     public static final Logger LOGGER = LoggerFactory.getLogger(Workflow.class);
 
-	
 	//TODO: DI and Factory
 	public Workflow(IGenericAPIFacade api) {
 		this.api = api;
