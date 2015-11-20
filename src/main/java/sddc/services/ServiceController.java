@@ -17,6 +17,8 @@ import sddc.services.domain.OrderedService;
 import sddc.services.domain.Service;
 import sddc.services.domain.ServiceModule;
 import sddc.services.domain.Size;
+import sddc.services.domain.Workflow;
+import sddc.services.genericapi.IGenericAPIFacade;
 
 @RestController
 public class ServiceController {
@@ -26,6 +28,8 @@ public class ServiceController {
     
     @Autowired
     private ServiceModuleRepo moduleRepo;
+    
+    private Workflow workflow = new Workflow();
     
     @PostConstruct
     private void createInitialData() {
@@ -50,9 +54,8 @@ public class ServiceController {
     
     @RequestMapping(value = "/services/{id}", method = RequestMethod.POST)
     public @ResponseBody String orderService(@RequestBody Service service){
-     Service newservice = new Service(service.getServiceName(),service.getServiceModules());
-     repo.save(newservice);
-     return "ok";
+    	workflow.orderService(service);
+    	return "ok";
     }
 
     @RequestMapping("/services")

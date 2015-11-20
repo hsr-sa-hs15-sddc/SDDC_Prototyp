@@ -1,12 +1,21 @@
 package sddc.services.domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.libvirt.LibvirtException;
 
+import sddc.services.OrderedServiceRepo;
+import sddc.services.genericapi.GenericAPILibVirt;
 import sddc.services.genericapi.IGenericAPIFacade;
 
 public class Workflow {
+	
+	@Autowired
+	private OrderedServiceRepo orderedServiceRepo;
 	
 	private IGenericAPIFacade api;
 	
@@ -24,11 +33,19 @@ public class Workflow {
 		}
 	}
 	
+	public Workflow() {
+		this(new GenericAPILibVirt());
+	}
+	
 	//Refactoring + Logging
 	public void orderService(Service service) {
+		
+		Set<Identifier> ids = new HashSet<Identifier>();
+		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Network)) {
 			try {
-				api.createNetwork(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createNetwork(null); //ServiceModule benötigt noch konfiguration
+				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Network: " + e.getMessage());
 				e.printStackTrace();
@@ -37,22 +54,25 @@ public class Workflow {
 		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Storage)) {
 			try {
-				api.createStorage(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createStorage(null); //ServiceModule benötigt noch konfiguration
+				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Storage: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}
 		
-		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Compute)) {
 			try {
-				api.createCompute(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createCompute(null); //ServiceModule benötigt noch konfiguration
+				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Compute: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}
+		
+		orderedServiceRepo.save(new OrderedService(service.getServiceName(), ids));
 	}
 	
 	//Refactoring + Logging
