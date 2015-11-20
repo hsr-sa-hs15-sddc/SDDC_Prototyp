@@ -26,6 +26,8 @@ public class ServiceModule {
 	@Enumerated(EnumType.STRING)
     private Size size;
 	
+	private String config;
+	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "modules")
 	private Set<Service> services = new HashSet<Service>(0);
 		
@@ -33,10 +35,17 @@ public class ServiceModule {
 	
 	public ServiceModule() {}
 	
-	public ServiceModule(String name, Size size, Category category) {
+	public ServiceModule(String name, Size size, Category category, String config) {
 		this.name = name;
 		this.size = size;
 		this.category = category;
+		this.config = config;
+	}
+	
+	public ServiceModule(String name, Category category, String config) {
+		this.name = name;
+		this.category = category;
+		this.config = config;
 	}
 	
 	
@@ -59,6 +68,14 @@ public class ServiceModule {
 	
 	public void setServices(Set<Service> service) {
 		this.services = service;
+	}
+
+	public String getConfig() {
+		return config;
+	}
+
+	public void setConfig(String config) {
+		this.config = config;
 	}
 	
 }

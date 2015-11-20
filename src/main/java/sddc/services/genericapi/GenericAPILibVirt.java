@@ -1,7 +1,7 @@
 package sddc.services.genericapi;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.libvirt.Connect;
 import org.libvirt.Domain;
 import org.libvirt.LibvirtException;
@@ -11,7 +11,7 @@ import org.libvirt.StoragePool;
 public class GenericAPILibVirt implements IGenericAPIFacade {
 	
 	private Connect conn;
-	private static final Logger logger = LogManager.getLogger("GenericAPILibVirt");
+	private static final Logger logger = LoggerFactory.getLogger(GenericAPILibVirt.class);
 
 	@Override
 	public void connect(String uri, boolean readOnly) throws LibvirtException {
