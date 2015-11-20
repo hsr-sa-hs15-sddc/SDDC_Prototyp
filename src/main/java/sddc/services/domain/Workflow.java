@@ -49,9 +49,8 @@ public class Workflow {
 		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Network)) {
 			try {
-				String identifier = api.createNetwork(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createNetwork(serviceModule.getConfig());
 				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
-				api.createNetwork(serviceModule.getConfig());
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Network: " + e.getMessage());
 				e.printStackTrace();
@@ -60,9 +59,8 @@ public class Workflow {
 		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Storage)) {
 			try {
-				String identifier = api.createStorage(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createStorage(serviceModule.getConfig());
 				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
-				api.createStorage(serviceModule.getConfig());
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Storage: " + e.getMessage());
 				e.printStackTrace();
@@ -71,9 +69,8 @@ public class Workflow {
 		
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Compute)) {
 			try {
-				String identifier = api.createCompute(null); //ServiceModule benötigt noch konfiguration
+				String identifier = api.createCompute(serviceModule.getConfig());
 				ids.add(new Identifier(identifier, serviceModule.getCategory(), serviceModule.getSize()));
-				api.createCompute(serviceModule.getConfig());
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Compute: " + e.getMessage());
 				e.printStackTrace();
@@ -81,7 +78,6 @@ public class Workflow {
 		}
 		
 		orderedServiceRepo.save(new OrderedService(service.getServiceName(), ids));
-		//Persistance
 	}
 	
 	//Refactoring + Logging
