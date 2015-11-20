@@ -57,6 +57,12 @@ public class ServiceController {
     	workflow.orderService(service);
     	return "ok";
     }
+    
+    @RequestMapping(value="/services/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void deleteService(@PathVariable("id") long id) {
+    	repo.delete(id);
+    }
 
     @RequestMapping("/services")
     @ResponseBody
