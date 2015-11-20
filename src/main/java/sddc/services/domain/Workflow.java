@@ -53,6 +53,7 @@ public class Workflow {
 				LOGGER.error("Could not create Network: " + e.getMessage());
 				e.printStackTrace();
 				rollback(ids);
+				return;
 			}
 		}
 		
@@ -64,6 +65,7 @@ public class Workflow {
 				LOGGER.error("Could not create Storage: " + e.getMessage());
 				e.printStackTrace();
 				rollback(ids);
+				return;
 			}
 		}
 		
@@ -75,6 +77,7 @@ public class Workflow {
 				LOGGER.error("Could not create Compute: " + e.getMessage());
 				e.printStackTrace();
 				rollback(ids);
+				return;
 			}
 		}
 		
