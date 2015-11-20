@@ -1,23 +1,10 @@
 <a href="#/services">Back to Overview</a>
-<table class="table">
-    <thead>
-    <tr>
-        <td>
-            Name
-        </td>
-         <td>
-            Modules
-        </td>
-    </tr>
-    </thead>
-    <tr>
-        <td>{{service.serviceName}}</td>
-        <td>
-        <span ng-repeat="module in service.serviceModules">
-        {{module.name}},
-        </span></td>
-    </tr>
 
+<h1>{{service.serviceName}}</h1>
 
-</table>
+<h2>Module:</h2>
+<span ng-repeat="module in service.serviceModules">
+<h4>{{module.name}}</h4>
+</span>
+<br>
 <button type="button" ng-click="orderService()">Order Service</button>

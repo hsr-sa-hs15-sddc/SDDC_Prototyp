@@ -20,7 +20,8 @@ sddcDashboard.config(function($routeProvider) {
     .when('/orderedservices/:orderedserviceId', {
     controller: 'orderedDetailService',
     templateUrl: '/views/orderedservice/detail.html'
-  }).otherwise({
+  })
+  .otherwise({
 			redirectTo: '/services'
 		});
 ;

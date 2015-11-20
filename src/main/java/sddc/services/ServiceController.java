@@ -41,10 +41,10 @@ public class ServiceController {
     private void createInitialData() {
     	cleanDb();
     	Set<ServiceModule> modules = new HashSet<ServiceModule>();
-    	modules.add(new ServiceModule("Modul1",Size.S,Category.Network,networkconfig));
+    	modules.add(new ServiceModule("Network Bridge",Size.S,Category.Network,networkconfig));
     	//modules.add(new ServiceModule("Modul2",Size.L,Category.Network,networkconfig));
         //repo.save(new Service("something"));
-        repo.save(new Service("something3",modules));
+        repo.save(new Service("Network Virtual Bridge",modules));
     }
     
     private void cleanDb() {

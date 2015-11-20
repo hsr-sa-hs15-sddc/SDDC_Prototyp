@@ -1,21 +1,9 @@
-<table class="table">
-    <thead>
-    <tr>
-        <td>
-            Name
-        </td>
-         <td>
-            Modules
-        </td>
-    </tr>
-    </thead>
-    <tr ng-repeat="service in services">
-        <td><a href="#/services/{{service.id}}">{{service.serviceName}}</a></td>
-        <td>
-        <span ng-repeat="module in service.serviceModules">
-        {{module.name}},
-        </span></td>
-    </tr>
-
-
-</table>
+<h1>Offerings</h1>
+<br>
+<span ng-repeat="service in services">
+<a href="#/services/{{service.id}}">
+<div  class="col-sm-4" style="background:#4388cc;height:200px;">
+  <h2 style="color:#FFF;text-align:center;line-height:2em;">{{service.serviceName}}</h2>
+</div>
+</a>
+</span>

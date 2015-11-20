@@ -4,6 +4,7 @@ package sddc.services;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 
@@ -33,9 +34,9 @@ public class OrderedServiceController {
 	 private void createInitialData() {
 		 repo.deleteAll();
 		 Set<Identifier> ids = new HashSet<Identifier>();
-		 ids.add(new Identifier("Hello World",Category.Compute,Size.L));
-		 ids.add(new Identifier("Hello World",Category.Network,Size.S));
-		 repo.save(new OrderedService("Hello World",ids));
+		 ids.add(new Identifier(UUID.randomUUID().toString(),Category.Compute,Size.L));
+		 ids.add(new Identifier(UUID.randomUUID().toString(),Category.Network,Size.S));
+		 repo.save(new OrderedService("LAMP Stack",ids));
 	 }
 	
     @RequestMapping("/api/orderedservices")
