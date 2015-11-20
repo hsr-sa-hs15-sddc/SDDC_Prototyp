@@ -52,6 +52,7 @@ public class Workflow {
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Network: " + e.getMessage());
 				e.printStackTrace();
+				rollback(ids);
 			}
 		}
 		
@@ -62,6 +63,7 @@ public class Workflow {
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Storage: " + e.getMessage());
 				e.printStackTrace();
+				rollback(ids);
 			}
 		}
 		
@@ -72,6 +74,7 @@ public class Workflow {
 			} catch (LibvirtException e) {
 				LOGGER.error("Could not create Compute: " + e.getMessage());
 				e.printStackTrace();
+				rollback(ids);
 			}
 		}
 		
@@ -108,6 +111,11 @@ public class Workflow {
 		}
 		
 		orderedServiceRepo.delete(orderedService);
+	}
+	
+	//Nur Testweise
+	private void rollback(Set<Identifier> identifiers) {
+		cancelService(new OrderedService("rollback", identifiers));
 	}
 
 }

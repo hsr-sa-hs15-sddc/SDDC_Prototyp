@@ -20,12 +20,16 @@ import sddc.services.domain.Identifier;
 import sddc.services.domain.OrderedService;
 import sddc.services.domain.Service;
 import sddc.services.domain.Size;
+import sddc.services.domain.Workflow;
 
 @RestController
 public class OrderedServiceController {
 	
 	@Autowired
 	private OrderedServiceRepo repo;
+	
+	@Autowired
+	private Workflow workflow;
 	
 	 @PostConstruct
 	 private void createInitialData() {
@@ -51,7 +55,7 @@ public class OrderedServiceController {
     
     @RequestMapping(value = "/orderedservices/{id}", method = RequestMethod.DELETE)
     public @ResponseBody String orderService(@RequestBody OrderedService service){
-     repo.delete(service.getId());
+     workflow.cancelService(service);
      return "ok";
     }
 }
