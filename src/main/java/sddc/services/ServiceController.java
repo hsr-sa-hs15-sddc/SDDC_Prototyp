@@ -23,21 +23,27 @@ import sddc.services.genericapi.IGenericAPIFacade;
 @RestController
 public class ServiceController {
     
+	private String networkconfig = "<network><name>default6</name><bridge name=\"virbr0\" /><forward mode=\"nat\"/><ip address=\"192.168.122.1\" netmask=\"255.255.255.0\">"
+			+ "<dhcp><range start=\"192.168.122.2\" end=\"192.168.122.254\" /></dhcp>"
+		    + "</ip><ip family=\"ipv6\" address=\"2001:db8:ca2:2::1\" prefix=\"64\" >"
+		    +  "<dhcp><range start=\"2001:db8:ca2:2:1::10\" end=\"2001:db8:ca2:2:1::ff\" /></dhcp></ip></network>";
+	
     @Autowired
     private ServiceRepo repo;
     
     @Autowired
     private ServiceModuleRepo moduleRepo;
     
-    private Workflow workflow = new Workflow();
+    @Autowired
+    private Workflow workflow;;
     
     @PostConstruct
     private void createInitialData() {
     	cleanDb();
     	Set<ServiceModule> modules = new HashSet<ServiceModule>();
-    	modules.add(new ServiceModule("Modul1",Size.S,Category.Network,"Config"));
-    	modules.add(new ServiceModule("Modul2",Size.L,Category.Compute,"config"));
-        repo.save(new Service("something"));
+    	modules.add(new ServiceModule("Modul1",Size.S,Category.Network,networkconfig));
+    	//modules.add(new ServiceModule("Modul2",Size.L,Category.Network,networkconfig));
+        //repo.save(new Service("something"));
         repo.save(new Service("something3",modules));
     }
     

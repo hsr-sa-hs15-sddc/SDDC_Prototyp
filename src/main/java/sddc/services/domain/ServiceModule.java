@@ -3,6 +3,7 @@ package sddc.services.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,6 +27,7 @@ public class ServiceModule {
 	@Enumerated(EnumType.STRING)
     private Size size;
 	
+	@Column(length=10000)
 	private String config;
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "modules")

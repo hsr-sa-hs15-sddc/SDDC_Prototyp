@@ -1,19 +1,23 @@
 package sddc.services.domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Controller;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.libvirt.LibvirtException;
 
+
 import sddc.services.OrderedServiceRepo;
 import sddc.services.genericapi.GenericAPILibVirt;
 import sddc.services.genericapi.IGenericAPIFacade;
 
+@Controller
 public class Workflow {
-	
+
 	@Autowired
 	private OrderedServiceRepo orderedServiceRepo;
 	
@@ -40,7 +44,7 @@ public class Workflow {
 	public void orderService(Service service) {
 		
 		Set<Identifier> ids = new HashSet<Identifier>();
-		
+		System.out.println(service.getServiceName());
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Network)) {
 			try {
 				String identifier = api.createNetwork(serviceModule.getConfig());
@@ -71,7 +75,7 @@ public class Workflow {
 			}
 		}
 		
-		orderedServiceRepo.save(new OrderedService(service.getServiceName(), ids));
+		orderedServiceRepo.save(new OrderedService(service.getServiceName(),ids));
 	}
 	
 	//Refactoring + Logging
@@ -105,6 +109,5 @@ public class Workflow {
 		
 		orderedServiceRepo.delete(orderedService);
 	}
-	
 
 }

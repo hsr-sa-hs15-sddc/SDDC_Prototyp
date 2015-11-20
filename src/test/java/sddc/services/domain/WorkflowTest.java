@@ -7,19 +7,32 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.libvirt.LibvirtException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.ConfigFileApplicationContextInitializer;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import sddc.ApplicationMain;
+import sddc.services.OrderedServiceRepo;
 import sddc.services.genericapi.GenericAPILibVirt;
 import sddc.services.genericapi.IGenericAPIFacade;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = ApplicationMain.class,
+        initializers = ConfigFileApplicationContextInitializer.class)
 
 public class WorkflowTest {
 
 	private IGenericAPIFacade api;
 	private String storageConfig, networkConfig, computeConfig;
 	private ServiceModule module1, module2, module3;
-	private Set<ServiceModule> modules = new HashSet();
+	private Set<ServiceModule> modules = new HashSet<ServiceModule>();
+	
+	@Autowired
+	private OrderedServiceRepo repo;
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -54,7 +67,8 @@ public class WorkflowTest {
 		Service service = new Service("Testservice",modules);
 		Workflow workflow = new Workflow(api);
 		workflow.orderService(service);
-		System.out.println(service.getServiceModules());
+		System.out.println(repo.findByName("Testservice"));
+	
 	}
 	
 	
