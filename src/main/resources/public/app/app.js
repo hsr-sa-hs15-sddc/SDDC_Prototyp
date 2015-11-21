@@ -4,22 +4,34 @@ var sddcDashboard = angular.module('sddcDashboard', ['ngRoute','ngResource']);
 
 sddcDashboard.config(function($routeProvider) {
 
-  $routeProvider.
-      when('/services', {
+  $routeProvider
+  .when('/services', {
         controller: 'ServicesController',
         templateUrl: 'views/service/list.html'
-      }).
-      when('/orderedservices',{
+  })
+  .when('/orderedservices',{
         controller: 'OrderedServicesController',
         templateUrl: 'views/orderedservice/list.html'
-      })
-      .when('/services/:serviceId', {
+  })
+  .when('/services/:serviceId', {
 			controller: 'detailService',
 			templateUrl: '/views/service/detail.html'
-		})
-    .when('/orderedservices/:orderedserviceId', {
-    controller: 'orderedDetailService',
-    templateUrl: '/views/orderedservice/detail.html'
+	})
+  .when('/orderedservices/:orderedserviceId', {
+      controller: 'orderedDetailService',
+      templateUrl: '/views/orderedservice/detail.html'
+  })
+  .when('/admin/services', {
+        controller: 'adminServicesController',
+        templateUrl: 'views/admin/listservice.html'
+  })
+  .when('/admin/servicemodules', {
+        controller: 'adminServicesController',
+        templateUrl: 'views/admin/listservicemodules.html'
+  })
+  .when('/admin/services/:serviceId', {
+  controller: 'detailAdminServicesController',
+  templateUrl: '/views/admin/detailservice.html'
   })
   .otherwise({
 			redirectTo: '/services'
