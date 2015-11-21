@@ -23,7 +23,8 @@ public class Workflow {
 	
 	private IGenericAPIFacade api;
 	
-    public static final Logger LOGGER = LoggerFactory.getLogger(Workflow.class);
+
+	public static final Logger LOGGER = LoggerFactory.getLogger(Workflow.class);
 
 	//TODO: DI and Factory
 	public Workflow(IGenericAPIFacade api) {
@@ -37,14 +38,19 @@ public class Workflow {
 	}
 	
 	public Workflow() {
-		this(new GenericAPILibVirt());
+		this.api = new GenericAPILibVirt();
+		try {
+			this.api.connect("test:///default", false);
+		} catch (LibvirtException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//Refactoring + Logging
 	public void orderService(Service service) {
 		
 		Set<Identifier> ids = new HashSet<Identifier>();
-		System.out.println(service.getServiceName());
 		for(ServiceModule serviceModule : service.getServiceModules(Category.Network)) {
 			try {
 				String identifier = api.createNetwork(serviceModule.getConfig());

@@ -32,7 +32,8 @@ public class ServiceModule {
 	
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "modules")
 	private Set<Service> services = new HashSet<Service>(0);
-		
+	
+	@Column(unique=true)
 	private String name;
 	
 	public ServiceModule() {}

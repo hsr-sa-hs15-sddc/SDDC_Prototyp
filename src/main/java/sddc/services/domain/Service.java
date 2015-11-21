@@ -23,7 +23,7 @@ public class Service {
 	@Id @GeneratedValue
 	private long id;
 	
-	@Column(name="name")
+	@Column(name="name",unique=true)
 	private String serviceName;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
